@@ -1,0 +1,22 @@
+{
+  "name": "foodtruckbanner",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/estebanpadilla/foodTruckBannerSpec.git"
+  },
+  "author": "mbolanosc",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/estebanpadilla/foodTruckBannerSpec/issues"
+  },
+  "homepage": "https://github.com/estebanpadilla/foodTruckBannerSpec#readme",
+  "dependencies": {
+    "browser-sync": "^2.18.8"
+  }
+}
