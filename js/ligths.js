@@ -13,19 +13,19 @@ function Ligths(position, context, cStart, cEnd, curveEndA, curveEndB) {
 	this.pool = [];
 
 	// luces
-	let light = Light(Vector(221, 321), this.context);
+let light = Light(Vector(485, 321), this.context);
 	this.pool.push(light);
 
-	light = Light(Vector(226, 328), this.context);
+	/*light = Light(Vector(490, 330), this.context);
 	this.pool.push(light);
 
-	light = Light(Vector(232, 334), this.context);
+	light = Light(Vector(500, 334), this.context);
 	this.pool.push(light);
 
-	light = Light(Vector(240, 334), this.context);
+	light = Light(Vector(510, 332), this.context);
 	this.pool.push(light);
 
-	light = Light(Vector(248, 325), this.context);
+	light = Light(Vector(520, 336), this.context);
 	this.pool.push(light);
 
 	light = Light(Vector(260, 332), this.context);
@@ -51,6 +51,7 @@ function Ligths(position, context, cStart, cEnd, curveEndA, curveEndB) {
 
 	light = Light(Vector(320, 320), this.context);
 	this.pool.push(light);
+	*/
 
 	this.update();
 }
@@ -61,7 +62,7 @@ Ligths.prototype.update = function () {
 	this.pool.forEach(function (light) {
 		light.update();
 	}, this);
-	
+
 }
 
 Ligths.prototype.render = function () {
@@ -71,8 +72,8 @@ Ligths.prototype.render = function () {
 	this.context.strokeStyle = 'black';
 	this.context.moveTo(this.position.x, this.position.y);
 	this.context.quadraticCurveTo(this.cStart, this.cEnd, this.curveEndA, this.curveEndB);
-	this.context.quadraticCurveTo(this.cStart + 30, this.cEnd, this.curveEndA + 40, this.curveEndB);
-	this.context.quadraticCurveTo(this.cStart + 60, this.cEnd, this.curveEndA + 70, this.curveEndB);
+	this.context.quadraticCurveTo(this.cStart + 30, this.cEnd, this.curveEndA + 30, this.curveEndB);
+	this.context.quadraticCurveTo(this.cStart + 60, this.cEnd, this.curveEndA + 65, this.curveEndB);
 	this.context.stroke();
 	this.context.closePath();
 

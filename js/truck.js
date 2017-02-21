@@ -28,7 +28,7 @@ function Truck(position, context) {
     //Box(Vector(this.position.x + 60, this.position.y + 170), 50, 'red', this.context);
 
   //cable para las luces
-  this.ligths = Ligths(Vector(this.position.x + 20, this.position.y + 20), this.context, 240, 350, 250, 320);
+  this.ligths = Ligths(Vector(this.position.x + 20, this.position.y + 20), this.context, this.position.x + 300, this.position.y + 50, this.position.x  + 320, this.position.y + 20);
 
   //Wheel Left
   this.wheell = Wheel(Vector(this.position.x + 60, this.position.y + 170), this.context);
