@@ -1,4 +1,3 @@
-//function Curves(xStart,yEnd,cStart,cEnd,curveEndA,curveEndB,lineWidth,curveColor,this.context){
 
 function Ligths(position, context, cStart, cEnd, curveEndA, curveEndB) {
 	if (!(this instanceof Ligths)) {
@@ -23,40 +22,46 @@ function Ligths(position, context, cStart, cEnd, curveEndA, curveEndB) {
 	light = Light(Vector(232, 334), this.context);
 	this.pool.push(light);
 
-	// Circle(Vector(232, 334), 2, true, '#92F22A', false, "#92F22A", 1, this.context);
-	// Circle(Vector(240, 335), 2, true, '#FEC606', false, "#FEC606", 1, this.context);
-	// Circle(Vector(248, 325), 2, true, '#10D2E5', false, "#10D2E5", 1, this.context);
+	light = Light(Vector(240, 334), this.context);
+	this.pool.push(light);
 
-	// Circle(Vector(254, 330), 2, true, '#92F22A', false, "#92F22A", 1, this.context);
-	// Circle(Vector(260, 339), 2, true, 'red', false, "red", 1, this.context);
-	// Circle(Vector(270, 339), 2, true, 'yellow', false, "yellow", 1, this.context);
-	// Circle(Vector(277, 330), 2, true, '#10D2E5', false, "#10D2E5", 1, this.context);
-	// Circle(Vector(280, 321), 2, true, 'red', false, "red", 1, this.context);
+	light = Light(Vector(248, 325), this.context);
+	this.pool.push(light);
 
-	// Circle(Vector(285, 330), 2, true, '#92F22A', false, "#92F22A", 1, this.context);
-	// Circle(Vector(294, 340), 2, true, 'yellow', false, "yellow", 1, this.context);
-	// Circle(Vector(305, 338), 2, true, '#10D2E5', false, "#10D2E5", 1, this.context);
-	// Circle(Vector(313, 330), 2, true, 'red', false, "red", 1, this.context);
-	// Circle(Vector(320, 321), 2, true, '#92F22A', false, "#92F22A", 1, this.context);
+	light = Light(Vector(260, 332), this.context);
+	this.pool.push(light);
 
+	light = Light(Vector(273, 334), this.context);
+	this.pool.push(light);
 
+	light = Light(Vector(285, 328), this.context);
+	this.pool.push(light);
 
+	light = Light(Vector(290, 320), this.context);
+	this.pool.push(light);
+
+	light = Light(Vector(295, 330), this.context);
+	this.pool.push(light);
+
+	light = Light(Vector(305, 335), this.context);
+	this.pool.push(light);
+
+	light = Light(Vector(315, 328), this.context);
+	this.pool.push(light);
+
+	light = Light(Vector(320, 320), this.context);
+	this.pool.push(light);
 
 	this.update();
 }
 
 Ligths.prototype.update = function () {
-	//select randomly a color
-	//var item = this.Colors[Math.floor(Math.random() * this.Colors.length)];
-	//console.log('COLOR ',item);
-	//Circle(Vector(221, 321), 2, true, item, false, item, 1, this.context);
 	this.render();
 
 	this.pool.forEach(function (light) {
 		light.update();
 	}, this);
-
-
+	
 }
 
 Ligths.prototype.render = function () {
@@ -71,8 +76,6 @@ Ligths.prototype.render = function () {
 	this.context.stroke();
 	this.context.closePath();
 
-	// this.ligths = Ligths(Vector(this.position.x + 80, this.position.y + 20), this.context, 265, 360, 250, 320);
-	// this.ligths = Ligths(Vector(this.position.x + 120, this.position.y + 20), this.context, 295, 360, 280, 320);
 }
 
 function Light(position, context) {
@@ -83,7 +86,7 @@ function Light(position, context) {
 	this.context = context;
 	this.position = position;
 	this.currentColorIndex = randomBtween(0, 3);
-	this.colors = ['#92F22A', '#E01931', '#1DABB8', '#44BBFF'];
+	this.colors = ['#92F22A','#FF7416','#83D6DE','#E22211','yellow','#D71A75','#A0F601','#0918EC','purple'];
 	this.color = this.colors[this.currentColorIndex];
 	this.timeToChange = randomBtween(60, 120);
 	this.timer = 0;

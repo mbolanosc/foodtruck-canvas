@@ -10,7 +10,7 @@ function Truck(position, context) {
   if (!(this instanceof Truck)) {
     return new Truck(position, context);
   }
-
+  this.speed = Vector(0,0);
   this.topColor = '#25923A';
   this.bottomColor = '#C92E34';
   this.windowColor = '#888888';
@@ -20,6 +20,12 @@ function Truck(position, context) {
   this.truckWidth = 230;
   this.angle = 0;
 
+  //edificios
+  this.buildings = Buildings(Vector(this.position.x - 320, this.position.y + 70), this.context);
+
+  //ventanas
+  //function Box(position, size, color, context) {
+    //Box(Vector(this.position.x + 60, this.position.y + 170), 50, 'red', this.context);
 
   //cable para las luces
   this.ligths = Ligths(Vector(this.position.x + 20, this.position.y + 20), this.context, 240, 350, 250, 320);
@@ -35,22 +41,24 @@ function Truck(position, context) {
 
 
 
+  //arboles
+  this.tree = Tree(Vector(this.position.x + 20, this.position.y + 20), this.context);
 }
 
-Truck.prototype.update = function () {
-
-
-
+Truck.prototype.update = function() {
+  this.buildings.update();
+  this.position.add(this.speed);
 
   this.render();
   this.wheell.update();
   this.wheelr.update();
   this.pizza.update();
   this.ligths.update();
+  //this.tree.update();
 
 }
 
-Truck.prototype.render = function () {
+Truck.prototype.render = function() {
 
   //Lucesita de la parte de atras.
   let stop = Ball(Vector(this.position.x - 5, this.position.y + 15), 4, 'red', this.context);
@@ -98,11 +106,11 @@ Truck.prototype.render = function () {
   let salesWindowBottom = RoundRect(Vector(this.position.x + 15, this.position.y + 85), 110, 15, 5, this.color1, this.context);
 
   //Lineas de adorno
-  let line = Line(Vector(this.position.x, this.position.y + 170), Vector(this.position.x + 265, this.position.y + 170), 8, 'round', 'black', this.context);
+  /*let line = Line(Vector(this.position.x, this.position.y + 170), Vector(this.position.x + 265, this.position.y + 170), 8, 'round', 'black', this.context);
 
   line = Line(Vector(this.position.x + 10, this.position.y + 110), Vector(this.position.x + 125, this.position.y + 110), 6, 'round', 'rgba(0,0,0,0.25)', this.context);
 
-  line = Line(Vector(this.position.x + 10, this.position.y + 122), Vector(this.position.x + 125, this.position.y + 122), 6, 'round', 'rgba(0,0,0,0.25)', this.context);
+  line = Line(Vector(this.position.x + 10, this.position.y + 122), Vector(this.position.x + 125, this.position.y + 122), 6, 'round', 'rgba(0,0,0,0.25)', this.context);*/
 
   //Luz direccional
   let lightBg = Line(Vector(this.position.x + 10, this.position.y + 140), Vector(this.position.x + 20, this.position.y + 140), 12, 'round', 'white', this.context);
