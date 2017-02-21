@@ -9,14 +9,26 @@ function init() {
 
   var truck = Truck(Vector(200, 300), ctx);
   function updatingEverything() {
+
+    ctx.clearRect(0, 0, window.innerWidth, innerHeight);
+
     truck.update();
+
     requestAnimationFrame(updatingEverything);
   }
+
   updatingEverything();
   //object.addEventListener("mouseover", myScript);
   //object.onmouseover = function(){myScript};
   //se lo puse al canvas no al truck
-  canvas.addEventListener("mouseover", function() {
-    console.log('hover');
+  canvas.addEventListener("click", function (e) {
+
+    if (e.clientX >= truck.position.x &&
+      e.clientX <= truck.position.x + 275 &&
+      e.clientY >= truck.position.y &&
+      e.clientY <= truck.position.y + 180) {
+      console.log(e);
+    }
   });
+
 }

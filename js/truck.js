@@ -20,6 +20,10 @@ function Truck(position, context) {
   this.truckWidth = 230;
   this.angle = 0;
 
+
+  //cable para las luces
+  this.ligths = Ligths(Vector(this.position.x + 20, this.position.y + 20), this.context, 240, 350, 250, 320);
+
   //Wheel Left
   this.wheell = Wheel(Vector(this.position.x + 60, this.position.y + 170), this.context);
 
@@ -27,13 +31,16 @@ function Truck(position, context) {
   this.wheelr = Wheel(Vector(this.position.x + 215, this.position.y + 170), this.context);
 
   //circulo de pizza
-  this.pizza = Pizza(Vector(this.position.x + 150,this.position.y - 60),this.context);
+  this.pizza = Pizza(Vector(this.position.x + 150, this.position.y - 60), this.context);
 
 
 
 }
 
-Truck.prototype.update = function() {
+Truck.prototype.update = function () {
+
+
+
 
   this.render();
   this.wheell.update();
@@ -41,11 +48,9 @@ Truck.prototype.update = function() {
   this.pizza.update();
   this.ligths.update();
 
-
 }
 
-Truck.prototype.render = function() {
-
+Truck.prototype.render = function () {
 
   //Lucesita de la parte de atras.
   let stop = Ball(Vector(this.position.x - 5, this.position.y + 15), 4, 'red', this.context);
@@ -184,12 +189,6 @@ Truck.prototype.render = function() {
   this.context.arc(this.position.x + 215, this.position.y + 170, 35, Math.PI, Math.PI * 2, false);
   this.context.closePath();
   this.context.fill();
-
-  //cable para las luces
-  this.ligths = Ligths(Vector(this.position.x + 20,this.position.y + 20),this.context,240,350,250,320);
-  this.ligths = Ligths(Vector(this.position.x + 80,this.position.y + 20),this.context,265,360,250,320);
-  this.ligths = Ligths(Vector(this.position.x + 120,this.position.y + 20),this.context,295,360,280,320);
-
 
 }
 
