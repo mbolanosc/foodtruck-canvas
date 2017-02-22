@@ -1,20 +1,14 @@
 
-function Ligths(position, context, cStart, cEnd, curveEndA, curveEndB) {
+function Ligths(position, context) {
 	if (!(this instanceof Ligths)) {
-		return new Ligths(position, context, cStart, cEnd, curveEndA, curveEndB);
+		return new Ligths(position, context);
 	}
 
 	this.context = context;
 	this.position = position;
-	this.cStart = cStart;
-	this.cEnd = cEnd;
-	this.curveEndA = curveEndA;
-	this.curveEndB = curveEndB;
-	this.pool = [];
 
 	// luces
-let light = Light(Vector(485, 321), this.context);
-	this.pool.push(light);
+	this.light1 = Light(Vector(this.position.x, this.position.y), this.context);
 
 	/*light = Light(Vector(490, 330), this.context);
 	this.pool.push(light);
@@ -57,26 +51,25 @@ let light = Light(Vector(485, 321), this.context);
 }
 
 Ligths.prototype.update = function () {
+
 	this.render();
+	this.light1.update();
+}
 
-	this.pool.forEach(function (light) {
-		light.update();
-	}, this);
-
+Ligths.prototype.updateLightsPositions = function () {
+	this.light1.position.x = this.position.x;
 }
 
 Ligths.prototype.render = function () {
-
 	this.context.beginPath();
 	this.context.lineWidth = 2;
 	this.context.strokeStyle = 'black';
 	this.context.moveTo(this.position.x, this.position.y);
-	this.context.quadraticCurveTo(this.cStart, this.cEnd, this.curveEndA, this.curveEndB);
-	this.context.quadraticCurveTo(this.cStart + 30, this.cEnd, this.curveEndA + 30, this.curveEndB);
-	this.context.quadraticCurveTo(this.cStart + 60, this.cEnd, this.curveEndA + 65, this.curveEndB);
+	this.context.quadraticCurveTo(this.position.x + 15, this.position.y + 20, this.position.x + 35, this.position.y);
+	this.context.quadraticCurveTo(this.position.x + 45, this.position.y + 20, this.position.x + 70, this.position.y);
+	this.context.quadraticCurveTo(this.position.x + 85, this.position.y + 20, this.position.x + 100, this.position.y);
 	this.context.stroke();
 	this.context.closePath();
-
 }
 
 function Light(position, context) {
@@ -87,7 +80,7 @@ function Light(position, context) {
 	this.context = context;
 	this.position = position;
 	this.currentColorIndex = randomBtween(0, 3);
-	this.colors = ['#92F22A','#FF7416','#83D6DE','#E22211','yellow','#D71A75','#A0F601','#0918EC','purple'];
+	this.colors = ['#92F22A', '#FF7416', '#83D6DE', '#E22211', 'yellow', '#D71A75', '#A0F601', '#0918EC', 'purple'];
 	this.color = this.colors[this.currentColorIndex];
 	this.timeToChange = randomBtween(60, 120);
 	this.timer = 0;

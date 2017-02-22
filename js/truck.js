@@ -10,7 +10,7 @@ function Truck(position, context) {
   if (!(this instanceof Truck)) {
     return new Truck(position, context);
   }
-  this.speed = Vector(0,0);
+  this.speed = Vector(0, 0);
   this.topColor = '#25923A';
   this.bottomColor = '#C92E34';
   this.windowColor = '#888888';
@@ -25,10 +25,10 @@ function Truck(position, context) {
 
   //ventanas
   //function Box(position, size, color, context) {
-    //Box(Vector(this.position.x + 60, this.position.y + 170), 50, 'red', this.context);
+  //Box(Vector(this.position.x + 60, this.position.y + 170), 50, 'red', this.context);
 
   //cable para las luces
-  this.ligths = Ligths(Vector(this.position.x + 20, this.position.y + 20), this.context, this.position.x + 300, this.position.y + 50, this.position.x  + 320, this.position.y + 20);
+  this.ligths = Ligths(Vector(this.position.x + 20, this.position.y + 20), this.context);
 
   //Wheel Left
   this.wheell = Wheel(Vector(this.position.x + 60, this.position.y + 170), this.context);
@@ -39,13 +39,11 @@ function Truck(position, context) {
   //circulo de pizza
   this.pizza = Pizza(Vector(this.position.x + 150, this.position.y - 60), this.context);
 
-
-
   //arboles
   this.tree = Tree(Vector(this.position.x + 20, this.position.y + 20), this.context);
 }
 
-Truck.prototype.update = function() {
+Truck.prototype.update = function () {
   this.buildings.update();
   this.position.add(this.speed);
 
@@ -58,7 +56,7 @@ Truck.prototype.update = function() {
 
 }
 
-Truck.prototype.render = function() {
+Truck.prototype.render = function () {
 
   //Lucesita de la parte de atras.
   let stop = Ball(Vector(this.position.x - 5, this.position.y + 15), 4, 'red', this.context);
